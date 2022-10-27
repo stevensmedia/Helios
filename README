@@ -9,8 +9,8 @@ Suggestion for getting the toolchain set up:
 3. install aqtinstall from the Python pip repository
 
 4. Use aqtinstall to install a native Qt install for your platform, and then a
-wasm install
+WASM install
 
 5. Get cmake, the WASM Qt, and Emscripten in your path.
 
-6. qmake; make; cd dist && emrul Helios.html
+6. qmake; make; cd dist && emrun Helios.html
