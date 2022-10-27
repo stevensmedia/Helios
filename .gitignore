@@ -1,0 +1,5 @@
+build/
+dist/
+Makefile
+.qmake.stash
+*.js_plugin_import.cpp

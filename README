@@ -1,0 +1,16 @@
+Web-based MUSH client, built with Qt 6 and Emscripten.
+
+Suggestion for getting the toolchain set up:
+
+1. Use emsdk to download Emscripten and get it set up
+
+2. Install cmake
+
+3. install aqtinstall from the Python pip repository
+
+4. Use aqtinstall to install a native Qt install for your platform, and then a
+wasm install
+
+5. Get cmake, the WASM Qt, and Emscripten in your path.
+
+6. qmake; make; cd dist && emrul Helios.html
