@@ -1,5 +1,8 @@
 #include <QMainWindow>
 
+class QTextEdit;
+class TerminalView;
+
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT
@@ -10,4 +13,8 @@ public:
 
 protected:
 	void closeEvent(QCloseEvent *);
+
+private:
+	TerminalView *outputView;
+	QTextEdit *inputView;
 };
