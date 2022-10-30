@@ -15,3 +15,8 @@ DESTDIR = dist/
 MOC_DIR = build/
 OBJECTS_DIR = build/
 UI_DIR = build/
+
+wasm {
+CONFIG += feature-thread
+QMAKE_LFLAGS += -sASYNCIFY -Os
+}
