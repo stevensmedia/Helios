@@ -2,10 +2,13 @@
 #include "TerminalView.h"
 
 #include <QtDebug>
+#include <QAction>
 #include <QDesktopServices>
 #include <QDir>
 #include <QFontMetrics>
 #include <QFrame>
+#include <QMenu>
+#include <QMenuBar>
 #include <QSettings>
 #include <QTextEdit>
 #include <QVBoxLayout>
@@ -13,7 +16,34 @@
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
 {
-	setWindowTitle("Helios");
+	setWindowTitle(tr("Helios"));
+
+	auto a = [this](const QString &text, const QString &name, QMenu *menu) -> QAction * {
+		QAction *action = new QAction(text);
+		action->setObjectName(name);
+		actions.append(action);
+		menu->addAction(action);
+		return action;
+	};
+
+	sunMenu = menuBar()->addMenu(tr("☼"));
+	a(tr("&About..."), "About", sunMenu);
+	a(tr("&Preferences..."), "Preferences", sunMenu);
+
+	serverMenu = menuBar()->addMenu(tr("Server"));
+	a(tr("&Connect..."), "Connect", serverMenu);
+	a(tr("&Disconnect"), "Disonnect", serverMenu);
+
+	editMenu = menuBar()->addMenu(tr("Edit"));
+	a(tr("Undo"), "Undo", editMenu);
+	a(tr("Redo"), "Redo", editMenu);
+	editMenu->addSeparator();
+	a(tr("Cut"), "Cut", editMenu);
+	a(tr("Copy"), "Copy", editMenu);
+	a(tr("Paste"), "Paste", editMenu);
+
+	helpMenu = menuBar()->addMenu(tr("Help"));
+	a(tr("&Help..."), "Help", helpMenu);
 
 	outputView = new TerminalView(this);
 

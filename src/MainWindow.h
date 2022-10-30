@@ -1,5 +1,8 @@
+#include <QList>
 #include <QMainWindow>
 
+class QAction;
+class QMenu;
 class QTextEdit;
 class TerminalView;
 
@@ -17,4 +20,12 @@ protected:
 private:
 	TerminalView *outputView;
 	QTextEdit *inputView;
+
+	QMenu *sunMenu;
+	QMenu *serverMenu;
+	QMenu *editMenu;
+	QMenu *viewMenu;
+	QMenu *helpMenu;
+
+	QList<QAction *> actions;
 };
