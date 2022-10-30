@@ -3,7 +3,7 @@
 TerminalView::TerminalView(QWidget *parent)
 	: QTextEdit(parent)
 {
-	setStyleSheet("background-color: black; color: white; selection-color: black; selection-background-color: white;");
+	setStyleSheet("font-family: DejaVu Sans Mono; background-color: black; color: white; selection-color: black; selection-background-color: white;");
 }
 
 TerminalView::~TerminalView()
