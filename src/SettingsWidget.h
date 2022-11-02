@@ -1,9 +1,9 @@
 #ifndef SETTINGSWIDGET_H
 #define SETTINGSWIDGET_H
 
-#include "DockWidget.h"
+#include "Dialog.h"
 
-class SettingsWidget : public DockWidget
+class SettingsWidget : public Dialog
 {
 	Q_OBJECT
 

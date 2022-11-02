@@ -7,7 +7,7 @@
 #include <QVBoxLayout>
 
 AboutWidget::AboutWidget(QWidget * parent)
-	:DockWidget(parent)
+	:Dialog(parent)
 {
 	setLayout(new QVBoxLayout);
 

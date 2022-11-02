@@ -1,9 +1,9 @@
 #ifndef ABOUTWIDGET_H
 #define ABOUTWIDGET_H
 
-#include "DockWidget.h"
+#include "Dialog.h"
 
-class AboutWidget : public DockWidget
+class AboutWidget : public Dialog
 {
 	Q_OBJECT
 

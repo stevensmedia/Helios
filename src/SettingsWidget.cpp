@@ -6,7 +6,7 @@
 #include <QVBoxLayout>
 
 SettingsWidget::SettingsWidget(QWidget * parent)
-	:DockWidget(parent)
+	: Dialog(parent)
 {
 	setLayout(new QVBoxLayout);
 

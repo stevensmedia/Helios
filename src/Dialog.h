@@ -3,12 +3,12 @@
 
 #include <QWidget>
 
-class DockWidget : public QWidget
+class Dialog : public QWidget
 {
 	Q_OBJECT
 
 public:
-	DockWidget(QWidget * = 0);
+	Dialog(QWidget * = 0);
 
 protected:
 	void showEvent(QShowEvent *);

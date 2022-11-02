@@ -1,14 +1,14 @@
-#include "DockWidget.h"
+#include "Dialog.h"
 
 #include <QtDebug>
 
-DockWidget::DockWidget(QWidget * parent)
+Dialog::Dialog(QWidget * parent)
 	: QWidget(parent, Qt::Tool | Qt::WindowStaysOnTopHint)
 {
 	hide();
 }
 
-void DockWidget::showEvent(QShowEvent *)
+void Dialog::showEvent(QShowEvent *)
 {
 	setWindowFlags(windowFlags() | Qt::Tool | Qt::WindowStaysOnTopHint);
 

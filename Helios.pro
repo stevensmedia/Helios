@@ -9,14 +9,14 @@ VERSION = 0.1
 SOURCES = \
 	src/main.cpp \
 	src/AboutWidget.cpp \
-	src/DockWidget.cpp \
+	src/Dialog.cpp \
 	src/MainWindow.cpp \
 	src/SettingsWidget.cpp \
 	src/TerminalView.cpp
 
 HEADERS = \
 	src/AboutWidget.h \
-	src/DockWidget.h \
+	src/Dialog.h \
 	src/MainWindow.h \
 	src/SettingsWidget.h \
 	src/TerminalView.h
