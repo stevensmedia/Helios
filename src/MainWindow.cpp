@@ -1,4 +1,7 @@
 #include "MainWindow.h"
+
+#include "AboutWidget.h"
+#include "SettingsWidget.h"
 #include "TerminalView.h"
 
 #include <QtDebug>
@@ -12,6 +15,23 @@
 #include <QSettings>
 #include <QTextEdit>
 #include <QVBoxLayout>
+
+template <typename T> T find(QList<T> list, T none, std::function<bool(T)> cb)
+{
+	for(qsizetype i = 0; i < list.size(); ++i) {
+		if(cb(list[i])) {
+			return list[i];
+		}
+	}
+	return none;
+}
+
+QAction *MainWindow::findAction(const QString &name)
+{
+	return find<QAction *>(actions, 0, [name](QAction *a) -> bool {
+		return a->objectName() == name;
+	});
+}
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -28,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 	sunMenu = menuBar()->addMenu(tr("☼"));
 	a(tr("&About..."), "About", sunMenu);
-	a(tr("&Preferences..."), "Preferences", sunMenu);
+	a(tr("&Settings..."), "Settings", sunMenu);
 
 	serverMenu = menuBar()->addMenu(tr("Server"));
 	a(tr("&Connect..."), "Connect", serverMenu);
@@ -44,6 +64,19 @@ MainWindow::MainWindow(QWidget *parent)
 
 	helpMenu = menuBar()->addMenu(tr("Help"));
 	a(tr("&Help..."), "Help", helpMenu);
+
+	aboutWidget = new AboutWidget(this);
+	settingsWidget = new SettingsWidget(this);
+
+	connect(findAction("About"), &QAction::triggered, [this]() {
+		aboutWidget->show();
+		aboutWidget->activateWindow();
+	});
+
+	connect(findAction("Settings"), &QAction::triggered, [this]() {
+		settingsWidget->show();
+		settingsWidget->activateWindow();
+	});
 
 	outputView = new TerminalView(this);
 

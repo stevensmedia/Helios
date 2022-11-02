@@ -6,9 +6,20 @@ CONFIG += c++latest
 
 VERSION = 0.1
 
-SOURCES = src/main.cpp src/MainWindow.cpp src/TerminalView.cpp
+SOURCES = \
+	src/main.cpp \
+	src/AboutWidget.cpp \
+	src/DockWidget.cpp \
+	src/MainWindow.cpp \
+	src/SettingsWidget.cpp \
+	src/TerminalView.cpp
 
-HEADERS = src/MainWindow.h src/TerminalView.h
+HEADERS = \
+	src/AboutWidget.h \
+	src/DockWidget.h \
+	src/MainWindow.h \
+	src/SettingsWidget.h \
+	src/TerminalView.h
 
 DESTDIR = dist/
 

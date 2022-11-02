@@ -1,3 +1,6 @@
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
 #include <QList>
 #include <QMainWindow>
 
@@ -14,6 +17,7 @@ public:
 	explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
 
+
 protected:
 	void closeEvent(QCloseEvent *);
 
@@ -28,4 +32,10 @@ private:
 	QMenu *helpMenu;
 
 	QList<QAction *> actions;
+	QAction *findAction(const QString &);
+
+	QWidget *aboutWidget;
+	QWidget *settingsWidget;
 };
+
+#endif
