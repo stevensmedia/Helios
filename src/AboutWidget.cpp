@@ -12,6 +12,7 @@ AboutWidget::AboutWidget(QWidget * parent)
 	setLayout(new QVBoxLayout);
 
 	layout()->addWidget(new QLabel(tr("Praise Helios!"), this));
+	layout()->addWidget(new QLabel(tr("Version") + QString(" " VERSION), this));
 	QPushButton *button = new QPushButton("Ok", this);
 	layout()->addWidget(button);
 

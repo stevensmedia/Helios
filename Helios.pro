@@ -27,6 +27,10 @@ MOC_DIR = build/
 OBJECTS_DIR = build/
 UI_DIR = build/
 
+VERSION_FLAGS = -DVERSION=\\\"$$VERSION\\\"
+QMAKE_CFLAGS += $$VERSION_FLAGS
+QMAKE_CXXFLAGS += $$VERSION_FLAGS
+
 wasm {
 CONFIG += feature-thread
 QMAKE_LFLAGS += -sASYNCIFY -Os
