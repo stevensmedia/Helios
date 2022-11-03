@@ -5,6 +5,7 @@
 #include <QMainWindow>
 
 class QAction;
+class QLabel;
 class QMenu;
 class QTextEdit;
 class TerminalView;
@@ -30,6 +31,8 @@ private:
 	QMenu *editMenu;
 	QMenu *viewMenu;
 	QMenu *helpMenu;
+
+	QLabel *connectedStatus;
 
 	QList<QAction *> actions;
 	QAction *findAction(const QString &);

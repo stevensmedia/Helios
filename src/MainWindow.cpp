@@ -10,9 +10,11 @@
 #include <QDir>
 #include <QFontMetrics>
 #include <QFrame>
+#include <QLabel>
 #include <QMenu>
 #include <QMenuBar>
 #include <QSettings>
+#include <QStatusBar>
 #include <QTextEdit>
 #include <QVBoxLayout>
 
@@ -77,6 +79,13 @@ MainWindow::MainWindow(QWidget *parent)
 		settingsWidget->show();
 		settingsWidget->activateWindow();
 	});
+
+	connectedStatus = new QLabel(this);
+	connectedStatus->setMargin(5);
+	setStatusBar(new QStatusBar);
+	statusBar()->addPermanentWidget(connectedStatus);
+
+	connectedStatus->setText("Disconnected");
 
 	outputView = new TerminalView(this);
 
