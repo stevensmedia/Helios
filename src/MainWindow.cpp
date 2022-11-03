@@ -99,8 +99,8 @@ MainWindow::MainWindow(QWidget *parent)
 		const int fontHeight = QFontMetrics(inputView->currentFont()).boundingRect("Testing").height();
 		const int lines = inputView->document()->lineCount();
 		const int height = (lines ? lines : 1) * fontHeight;
-		inputView->setMaximumHeight(height + margin);
-		inputView->setMinimumHeight(height + margin);
+		inputView->setMaximumHeight(height + margin + 5);
+		inputView->setMinimumHeight(height + margin + 5);
 	});
 
 	inputView->clear();
