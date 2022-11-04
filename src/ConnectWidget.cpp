@@ -1,4 +1,4 @@
-#include "SettingsWidget.h"
+#include "ConnectWidget.h"
 
 #include <QtDebug>
 #include <QFrame>
@@ -9,7 +9,7 @@
 #include <QTextEdit>
 #include <QVBoxLayout>
 
-SettingsWidget::SettingsWidget(QWidget * parent)
+ConnectWidget::ConnectWidget(QWidget * parent)
 	: Dialog(parent)
 {
 	setWindowTitle(tr("Settings"));
@@ -18,6 +18,7 @@ SettingsWidget::SettingsWidget(QWidget * parent)
 	QListWidget *pageList = new QListWidget(this);
 
 	QPushButton *newButton = new QPushButton("New Profile", this);
+	QPushButton *connectButton = new QPushButton("Connect", this);
 	QPushButton *closeButton = new QPushButton("Close", this);
 
 	auto lbl = [this]() -> QTextEdit * {
@@ -48,6 +49,7 @@ SettingsWidget::SettingsWidget(QWidget * parent)
 	QHBoxLayout *buttonLayout = new QHBoxLayout;
 	buttonLayout->addWidget(newButton);
 	buttonLayout->addStretch(2);
+	buttonLayout->addWidget(connectButton);
 	buttonLayout->addWidget(closeButton);
 
 	auto row = [this, pageLayout](const QString &name, QWidget *widget) {
@@ -69,6 +71,9 @@ SettingsWidget::SettingsWidget(QWidget * parent)
 
 	/* Events */
 	connect(newButton, &QPushButton::clicked, [this](bool) {
+	});
+
+	connect(connectButton, &QPushButton::clicked, [this](bool) {
 	});
 
 	connect(closeButton, &QPushButton::clicked, [this](bool) {

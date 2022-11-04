@@ -38,7 +38,7 @@ private:
 	QAction *findAction(const QString &);
 
 	QWidget *aboutWidget;
-	QWidget *settingsWidget;
+	QWidget *connectWidget;
 };
 
 #endif

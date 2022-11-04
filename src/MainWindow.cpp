@@ -1,7 +1,7 @@
 #include "MainWindow.h"
 
 #include "AboutWidget.h"
-#include "SettingsWidget.h"
+#include "ConnectWidget.h"
 #include "TerminalView.h"
 
 #include <QtDebug>
@@ -68,16 +68,16 @@ MainWindow::MainWindow(QWidget *parent)
 	a(tr("&Help..."), "Help", helpMenu);
 
 	aboutWidget = new AboutWidget(this);
-	settingsWidget = new SettingsWidget(this);
+	connectWidget = new ConnectWidget(this);
 
 	connect(findAction("About"), &QAction::triggered, [this]() {
 		aboutWidget->show();
 		aboutWidget->activateWindow();
 	});
 
-	connect(findAction("Settings"), &QAction::triggered, [this]() {
-		settingsWidget->show();
-		settingsWidget->activateWindow();
+	connect(findAction("Connect"), &QAction::triggered, [this]() {
+		connectWidget->show();
+		connectWidget->activateWindow();
 	});
 
 	connectedStatus = new QLabel(this);
