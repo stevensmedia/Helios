@@ -21,7 +21,7 @@ ConnectWidget::ConnectWidget(QWidget * parent)
 	QPushButton *connectButton = new QPushButton("Connect", this);
 	QPushButton *closeButton = new QPushButton("Close", this);
 
-	auto lbl = [this]() -> QTextEdit * {
+	std::function<QTextEdit*()> lbl = [this]() -> QTextEdit * {
 		QTextEdit *widget = new QTextEdit(this);
 		const int height = QFontMetrics(widget->currentFont()).boundingRect("Testing").height() + 10;
 		widget->setMaximumHeight(height);
@@ -70,13 +70,31 @@ ConnectWidget::ConnectWidget(QWidget * parent)
 	mainLayout->addLayout(buttonLayout);
 
 	/* Events */
-	connect(newButton, &QPushButton::clicked, [this](bool) {
+	connect(newButton, &QPushButton::clicked, [this]() {
 	});
 
-	connect(connectButton, &QPushButton::clicked, [this](bool) {
+	connect(connectButton, &QPushButton::clicked, [this]() {
 	});
 
-	connect(closeButton, &QPushButton::clicked, [this](bool) {
+	connect(closeButton, &QPushButton::clicked, [this]() {
 		this->hide();
 	});
+
+	std::function<void()> updateConnection = [&]() {
+		QListWidgetItem *current = pageList->currentItem();
+		QVector<QWidget *> widgets {
+			nameLabel,
+			hostLabel,
+			portLabel,
+			userLabel,
+			passLabel
+		};
+
+		for(QWidget *i: widgets) {
+			i->setEnabled(!!current);
+		}
+	};
+
+	connect(pageList, &QListWidget::itemSelectionChanged, updateConnection);
+	updateConnection();
 }
