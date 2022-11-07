@@ -6,20 +6,9 @@ CONFIG += c++latest
 
 VERSION = 0.1
 
-SOURCES = \
-	src/main.cpp \
-	src/AboutWidget.cpp \
-	src/ConnectWidget.cpp \
-	src/Dialog.cpp \
-	src/MainWindow.cpp \
-	src/TerminalView.cpp
+SOURCES = $$files(src/*.c) $$files(src/*.cpp)
 
-HEADERS = \
-	src/AboutWidget.h \
-	src/ConnectWidget.h \
-	src/Dialog.h \
-	src/MainWindow.h \
-	src/TerminalView.h
+HEADERS = $$files(src/*.h)
 
 DESTDIR = dist/
 
