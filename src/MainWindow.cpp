@@ -1,7 +1,7 @@
-#include "MainWindow.h"
-
 #include "AboutWidget.h"
+#include "Application.h"
 #include "ConnectWidget.h"
+#include "MainWindow.h"
 #include "TerminalView.h"
 
 #include <QtDebug>

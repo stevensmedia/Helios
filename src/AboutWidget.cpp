@@ -1,4 +1,5 @@
 #include "AboutWidget.h"
+#include "Application.h"
 
 #include <QtDebug>
 #include <QFrame>

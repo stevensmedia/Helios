@@ -1,3 +1,4 @@
+#include "Application.h"
 #include "ConnectWidget.h"
 
 #include <QtDebug>
