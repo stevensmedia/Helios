@@ -90,14 +90,14 @@ MainWindow::MainWindow(QWidget *parent)
 		findAction("Connect")->setEnabled(false);
 		findAction("Disconnect")->setEnabled(true);
 		connectedStatus->setText(QString("Connected to ") + s);
-		qDebug() << "[MainWindow onConnect]";
+		qDebug() << "[MainWindow onConnect] Connection detected";
 	};
 
 	std::function<void ()> onDisconnect = [this]() {
 		findAction("Connect")->setEnabled(true);
 		findAction("Disconnect")->setEnabled(false);
 		connectedStatus->setText("Disconnected");
-		qDebug() << "[MainWindow onDisconnect]";
+		qDebug() << "[MainWindow onDisconnect] Disconnection detected";
 	};
 
 	connect(Application::app, &Application::connected, onConnect);
