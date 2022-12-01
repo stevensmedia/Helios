@@ -54,7 +54,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 	serverMenu = menuBar()->addMenu(tr("Server"));
 	a(tr("&Connect..."), "Connect", serverMenu);
-	a(tr("&Disconnect"), "Disonnect", serverMenu);
+	a(tr("&Disconnect"), "Disconnect", serverMenu);
 
 	editMenu = menuBar()->addMenu(tr("Edit"));
 	a(tr("Undo"), "Undo", editMenu);
@@ -75,17 +75,38 @@ MainWindow::MainWindow(QWidget *parent)
 		aboutWidget->activateWindow();
 	});
 
+	connect(findAction("Disconnect"), &QAction::triggered, [this]() {
+		qDebug() << "[MainWindow Disconnect] activated";
+		Application::app->disconnect();
+	});
+
 	connect(findAction("Connect"), &QAction::triggered, [this]() {
+		qDebug() << "[MainWindow Connect] activated";
 		connectWidget->show();
 		connectWidget->activateWindow();
 	});
+
+	std::function<void (const QString &)> onConnect = [this](const QString &s) {
+		findAction("Connect")->setEnabled(false);
+		findAction("Disconnect")->setEnabled(true);
+		connectedStatus->setText(QString("Connected to ") + s);
+		qDebug() << "[MainWindow onConnect]";
+	};
+
+	std::function<void ()> onDisconnect = [this]() {
+		findAction("Connect")->setEnabled(true);
+		findAction("Disconnect")->setEnabled(false);
+		connectedStatus->setText("Disconnected");
+		qDebug() << "[MainWindow onDisconnect]";
+	};
+
+	connect(Application::app, &Application::connected, onConnect);
+	connect(Application::app, &Application::disconnected, onDisconnect);
 
 	connectedStatus = new QLabel(this);
 	connectedStatus->setMargin(5);
 	setStatusBar(new QStatusBar);
 	statusBar()->addPermanentWidget(connectedStatus);
-
-	connectedStatus->setText("Disconnected");
 
 	outputView = new TerminalView(this);
 
@@ -115,6 +136,8 @@ MainWindow::MainWindow(QWidget *parent)
 	QSettings settings;
 	restoreGeometry(settings.value("mainWindowGeometry").toByteArray());
 	restoreState(settings.value("mainWindowState").toByteArray());
+
+	onDisconnect();
 }
 
 void MainWindow::closeEvent(QCloseEvent *)
