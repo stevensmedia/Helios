@@ -34,8 +34,7 @@ ConnectWidget::ConnectWidget(QWidget * parent)
 	};
 
 	QTextEdit *nameLabel = lbl();
-	QTextEdit *hostLabel = lbl();
-	QTextEdit *portLabel = lbl();
+	QTextEdit *urlLabel = lbl();
 	QTextEdit *userLabel = lbl();
 	QTextEdit *passLabel = lbl();
 
@@ -60,8 +59,7 @@ ConnectWidget::ConnectWidget(QWidget * parent)
 		pageLayout->addLayout(l);
 	};
 	row(tr("Profile Name"), nameLabel);
-	row(tr("Host"), hostLabel);
-	row(tr("Port"), portLabel);
+	row(tr("URL"), urlLabel);
 	row(tr("User name"), userLabel);
 	row(tr("Password"), passLabel);
 
@@ -85,8 +83,7 @@ ConnectWidget::ConnectWidget(QWidget * parent)
 		QListWidgetItem *current = pageList->currentItem();
 		QVector<QWidget *> widgets {
 			nameLabel,
-			hostLabel,
-			portLabel,
+			urlLabel,
 			userLabel,
 			passLabel
 		};
